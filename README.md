@@ -1,6 +1,7 @@
 # SimPre
 
 * Download [https://simpre.vercel.app/simpre.zip](simpre.vercel.app/simpre.zip)
+* Demo [https://simpre.vercel.app/](simpre.vercel.app)
 
 ## What is SimPre
 
