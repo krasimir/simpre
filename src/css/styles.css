@@ -30,7 +30,7 @@ section code {
   left: 0;
   height: 4px;
   z-index: 10;
-  background: #999;
+  background: #FF0000;
   transition: width 500ms ease-out;
 }
 /* Typography */
