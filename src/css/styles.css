@@ -11,6 +11,8 @@ section {
   top: 0;
   left: 0;
   opacity: 0;
+  transition: opacity 600ms ease-out;
+  visibility: hidden;
 }
 section pre {
   margin: 0;
@@ -32,7 +34,24 @@ section code {
   transition: width 500ms ease-out;
 }
 /* Typography */
-h1 {
+h1, h2, h3, p {
+  padding: 0 2em;
+  margin: 0 0 1em 0;
   text-align: center;
-  padding: 2em;
 }
+h1 {
+  font-size: 2em;
+  line-height: 0.6em;
+}
+h1 small {
+  font-size: 0.4em;
+}
+h2 {
+  font-size: 1.6em;
+}
+h3 {
+  font-size: 1.2em;
+}
+/* layout */
+.mt1 { margin-top: 1em !important; }
+.w500 { max-width: 500px !important; }

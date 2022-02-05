@@ -10,7 +10,7 @@
       const codeNode = document.createElement('code');
       codeNode.setAttribute('class', (options.class || ''));
       codeNode.innerHTML = Prism.highlight(text, Prism.languages.javascript, 'javascript');
-      node.appendChild(codeNode);
+      node.appendChild(codeNode, true);
     }
     currentNode.parentNode.replaceChild(node, currentNode);
   }

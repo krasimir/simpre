@@ -4,8 +4,8 @@ const DOWN = ['ArrowDown', 40];
 const LEFT = ['ArrowLeft', 37];
 const RIGHT = ['ArrowRight', 39];
 const BACKSPACE = ['Backspace', 8];
-const FORWARD = [].concat(DOWN, RIGHT);
-const BACKWARD = [].concat(UP, LEFT, BACKSPACE);
+const FORWARD = [].concat(RIGHT, DOWN);
+const BACKWARD = [].concat(LEFT, UP, BACKSPACE);
 
 function init() {
   const progressNode = document.querySelector('#progress');
@@ -13,7 +13,7 @@ function init() {
   const totalSlides = slides.length;
   let current = -1;
 
-  showSlide(0);
+  showSlide(parseInt(window.location.hash.substr(1)) || 0);
 
   document.querySelector('body').addEventListener('keyup', (e) => {
     const key = e.key || e.keyCode;
@@ -30,14 +30,30 @@ function init() {
 
   function showSlide(idx) {
     if (current >= 0) {
+      slides[current].style.visibility = 'hidden';
       slides[current].style.opacity = 0;
     }
     current = idx;
+    slides[current].style.visibility = 'visible';
     slides[current].style.opacity = 1;
-    updateProgress();
-    setTimeout(() => {
-      fit(slides[current]);
-    }, 1);
+    const postSlide = () => {
+      updateProgress();
+      setTimeout(() => {
+        fit(slides[current]);
+        location.href = "#"+ current;
+      }, 1);
+    }
+    // Checking for a code snippet. If we have one we are waiting,
+    // till it disappears.
+    let int;
+    (function checkForScriptTag() {
+      clearTimeout(int);
+      if (slides[current].innerHTML.indexOf('<script') >= 0) {
+        int = setTimeout(checkForScriptTag, 100);
+      } else {
+        postSlide();
+      }
+    })();
   }
   function updateProgress() {
     const percents = (current + 1) / totalSlides * 100;
@@ -45,7 +61,7 @@ function init() {
   }
 }
 
-function fit(node) {
+window.fit = function fit(node) {
   if (node.scaled) return;
   const rect = node.getBoundingClientRect();
   const w =  rect.width

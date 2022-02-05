@@ -1,34 +1,31 @@
-const name = {
-  firstName: "Krasimir",
-  lastName: "Tsonev",
-  hoursPerDay: [8, 1, 4, 6, 0],
-};
+(async function importSlide() {
+  const options = document.currentScript.dataset;
+  if (options.file) {
+    const [err, text] = await load(options.file);
+    const currentNode = document.querySelector(`[data-file="${options.file}"]`);
+    const node = document.createElement('pre');
+    if (err) {
+      node.innerHTML = `<p>"${options.file}" file can not be loaded</p><pre>${err.toString()}</pre>`;
+    } else {
+      const codeNode = document.createElement('code');
+      codeNode.setAttribute('class', (options.class || ''));
+      codeNode.innerHTML = Prism.highlight(text, Prism.languages.javascript, 'javascript');
+      node.appendChild(codeNode, true);
+    }
+    currentNode.parentNode.replaceChild(node, currentNode);
+  }
 
-const userData = { age: 36, ...name };
-console.log(userData); // age, first, last name and hours per day
-
-const updates = { age: 37 };
-const updatedData = { ...userData, ...updates };
-console.log(updatedData); // age=37
-
-console.log(Math.max(...userData.hoursPerDay)); // 8
-
-const copy = [...userData.hoursPerDay];
-console.log(copy === userData.hoursPerDay); // false
-
-const updates = { age: 37 };
-const updatedData = { ...userData, ...updates };
-console.log(updatedData); // age=37
-
-console.log(Math.max(...userData.hoursPerDay)); // 8
-
-const copy = [...userData.hoursPerDay];
-console.log(copy === userData.hoursPerDay); // false
-const updates = { age: 37 };
-const updatedData = { ...userData, ...updates };
-console.log(updatedData); // age=37
-
-console.log(Math.max(...userData.hoursPerDay)); // 8
-
-const copy = [...userData.hoursPerDay];
-console.log(copy === userData.hoursPerDay); // false
+  async function load(file, done) {
+    try {
+      const res = await fetch(file);
+      if (res.status === 200) {
+        const text = await res.text();
+        return [undefined, text];
+      } else {
+        throw new Error(`Problem loading the file. Status: ${res.status}`);
+      }
+    } catch(err) {
+      return [err];
+    }
+  }
+})();
