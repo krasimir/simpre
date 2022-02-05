@@ -5,7 +5,10 @@ body {
   padding: 0;
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
 }
+.mt1 { margin-top: 1em !important; }
+.w500 { max-width: 500px !important; }
 section {
   position: absolute;
   top: 0;
@@ -16,7 +19,7 @@ section {
 }
 section pre {
   margin: 0;
-  padding: 4em;
+  padding: 0 2em;
   font-size: 1em;
 }
 section code {
@@ -30,11 +33,21 @@ section code {
   left: 0;
   height: 4px;
   z-index: 10;
-  background: #FF0000;
+  background: #00009f;
   transition: width 500ms ease-out;
 }
-/* Typography */
-h1, h2, h3, p {
+a {
+  text-decoration: underline;
+  color: #00009f;
+}
+ul {
+  list-style: none;
+}
+ul li::before {
+  content: "• ";
+  font-size: 0.8em;
+}
+h1, h2, h3, p, ul {
   padding: 0 2em;
   margin: 0 0 1em 0;
   text-align: center;
@@ -52,6 +65,8 @@ h2 {
 h3 {
   font-size: 1.2em;
 }
-/* layout */
-.mt1 { margin-top: 1em !important; }
-.w500 { max-width: 500px !important; }
+p code {
+  font-family: inherit;
+  background: #ccc;
+  padding: 0 0.2em;
+}

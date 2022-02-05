@@ -12,16 +12,41 @@
 
   <section>
     <h1>Welcome to SimPre<br /><small>The <u>Sim</u>plest <u>Pre</u>sentation Framework</small></h1>
-    <p>Press ➡️ to move forward.</p>
+    <ul>
+      <li>Every &lt;section&gt; tag is a slide</li>
+      <li>Forward (➡️ and ⬇️), Backward (⬅️ and ⬆️) </li>
+      <li>Auto-scaling and centering</li>
+      <li>Syntax highlighting</li>
+      <li>Progress indicator</li>
+    </ul>
+    <p>
+      Download <a href="https://simpre.vercel.app/simpre.zip" target="_blank">simpre.zip</a>
+    </p>
   </section>
   <section>
-    <p class="w500">The main reason for creating this tiny Framework is <strong>the lack of slide auto screen fit</strong>. I want to dump my content and somehow stop worrying about formatting. This is what SimPre does for me. Whether this is text, image, or a code snippet, it automatically scales and positions the slide, so it uses all the available space. Check out the next slide.</p>
-  </section>
-  <section><script src="assets/is.js" data-file="slides/example.js"></script></section>
-  <section>
-    <p class="w500">SimPre doesn't have any fancy features like vertical slides, animations, or fragments.<br />All this is up to you. Sorry!</p>
+    <p class="w500">The main reason for creating this tiny Framework is <strong>the lack of slide auto screen fit</strong>. I want to dump my content and somehow stop worrying about formatting. This is what SimPre does for me. Whether this is text, image, or a code snippet, it automatically scales and positions the slide, so it uses all the available space.</p>
+    <p class="w500"><small>Next: basic usage ➡️</small></p>
   </section>
   <section>
+    <h2>Basic usage</h2>
+    <p class="w500">The first step is to download <a href="https://simpre.vercel.app/simpre.zip" target="_blank">simpre.zip</a>. Extract it. All the slides go to <code>index.html</code>.</p>
+    <p class="w500">To create a new slide just add a new &lt;section&gt; tag.</p>
+    <p class="w500">To make a slide with code don't use  &lt;pre&gt; or &lt;code&gt; tags directly. Insert the following:<br /><small><code>&lt;script src="assets/is.js" data-file="slides/example.js">&lt;/script></code></small><br />Where "slides/example.js" is a file that you create.</p>
+    <p class="w500">That's it. Happy presenting!</p>
+    <p class="w500"><small>Next: some demonstration slide ➡️</small></p>
+  </section>
+  <section>
+    <p>This is a code slide</p>
+    <script src="assets/is.js" data-file="slides/example.js"></script>
+  </section>
+  <section>
+    <img src="assets/imgs/a.png" />
+  </section>
+  <section>
+    <img src="assets/imgs/b.png" />
+  </section>
+  <section>
+    <p class="w500">Download:<br /><a href="https://simpre.vercel.app/simpre.zip" target="_blank">simpre.zip</a></p>
     <p class="w500">Documentation:<br /><a href="https://github.com/krasimir/simpre" target="_blank">github.com/krasimir/simpre</a></p>
   </section>
 
