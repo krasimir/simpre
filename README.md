@@ -15,5 +15,5 @@
 
 * The first step is to download [https://simpre.vercel.app/simpre.zip](simpre.zip). Extract it. All the slides go to `index.html`
 * To create a new slide just add a new &lt;section&gt; tag.
-* To make a slide with code don't use  &lt;pre&gt; or &lt;code&gt; tags directly. Insert the following:```&lt;script src="assets/is.js" data-file="slides/example.js">&lt;/script>```. Where `slides/example.js` is a file that you create.
+* To make a slide with code don't use  &lt;pre&gt; or &lt;code&gt; tags directly. Insert the following:```<script src="assets/is.js" data-file="slides/example.js"></script>```. Where `slides/example.js` is a file that you create.
 * That's it. Happy presenting!
