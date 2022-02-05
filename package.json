@@ -21,10 +21,11 @@
     "url": "https://github.com/krasimir/simpre/issues"
   },
   "homepage": "https://github.com/krasimir/simpre#readme",
-  "dependencies": {
+  "devDependencies": {
     "browserify": "17.0.0",
     "chalk": "4.1.2",
     "chokidar": "3.5.2",
-    "clean-css": "5.2.2"
+    "clean-css": "5.2.2",
+    "uglify-js": "3.15.0"
   }
 }

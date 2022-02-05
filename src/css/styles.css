@@ -10,6 +10,7 @@ section {
   position: absolute;
   top: 0;
   left: 0;
+  opacity: 0;
 }
 section pre {
   margin: 0;
@@ -20,4 +21,18 @@ section code {
   margin: 0;
   padding: 0;
   font-size: 1em;
+}
+#progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  z-index: 10;
+  background: #999;
+  transition: width 500ms ease-out;
+}
+/* Typography */
+h1 {
+  text-align: center;
+  padding: 2em;
 }
