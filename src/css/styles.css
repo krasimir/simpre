@@ -7,6 +7,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   overflow: hidden;
 }
+::selection, ::-moz-selection {
+  color: #fff !important;
+  background: #f7f7f7 !important;
+}
 .mt1 { margin-top: 1em !important; }
 .w500 { max-width: 500px !important; }
 section {

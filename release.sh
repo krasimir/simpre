@@ -1,3 +1,4 @@
+node ./lib/build.js
 mkdir ./simpre
 cp -r ./public/assets ./simpre
 cp -r ./public/slides ./simpre
