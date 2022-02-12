@@ -1,11 +1,15 @@
+window.Prism = require('prismjs');
+
 const SLIDES_SELECTOR = 'section';
 const UP = ['ArrowUp', 38];
 const DOWN = ['ArrowDown', 40];
 const LEFT = ['ArrowLeft', 37];
 const RIGHT = ['ArrowRight', 39];
 const BACKSPACE = ['Backspace', 8];
+const SHIFT = ['Shift', 16];
 const FORWARD = [].concat(RIGHT, DOWN);
 const BACKWARD = [].concat(LEFT, UP, BACKSPACE);
+let SELECTION_TYPE = true;
 
 function init() {
   const progressNode = document.querySelector('#progress');
@@ -14,6 +18,7 @@ function init() {
   let current = -1;
 
   showSlide(parseInt(window.location.hash.substr(1)) || 0);
+  setSelectionType();
 
   document.querySelector('body').addEventListener('keyup', (e) => {
     const key = e.key || e.keyCode;
@@ -25,6 +30,9 @@ function init() {
       if (current - 1 >= 0) {
         showSlide(current - 1);
       }
+    }
+    if (SHIFT.includes(key)) {
+      setSelectionType();
     }
   });
 
@@ -58,6 +66,11 @@ function init() {
   function updateProgress() {
     const percents = (current + 1) / totalSlides * 100;
     progressNode.style.width = percents + '%';
+  }
+  function setSelectionType() {
+    document.querySelector('body')
+    .setAttribute('class', SELECTION_TYPE ? 'selection-type-1' : 'selection-type-2');
+    SELECTION_TYPE = !SELECTION_TYPE;
   }
 }
 
