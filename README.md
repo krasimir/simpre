@@ -1,4 +1,4 @@
-# SimPre - a ~10KB HTML presentation framework
+# SimPre - a 10KB HTML presentation framework
 
 I've always wanted a minimalistic presentation framework that formats my slides correctly. SimPre scales and positions my content, using all the available space. In addition, it comes with a syntax highlighter and progress indicator.<br /><br /><small>Move on and see how to use it.
 
