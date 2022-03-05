@@ -1,6 +1,6 @@
 {
   "name": "simpre",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "HTML presentation framework",
   "main": "index.js",
   "scripts": {

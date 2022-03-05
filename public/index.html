@@ -5,50 +5,61 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SimPre</title>
-  <link rel="stylesheet" href="assets/styles.css" />
-  <script src="assets/simpre.js"></script>
+  <link rel="stylesheet" href="https://simpre.vercel.app/assets/styles.css" />
+  <script src="https://simpre.vercel.app/assets/simpre.js"></script>
+  <style>
+    .with-avatar {
+      text-align: left;
+    }
+    .with-avatar img {
+      display: block;
+      float: left;
+      width: 100px;
+      margin: 0 1em 6em 0;
+    }
+  </style>
 </head>
 <body>
 
   <section>
-    <h1>Welcome to SimPre<br /><small>The <u>Sim</u>plest <u>Pre</u>sentation Framework</small></h1>
-    <ul>
-      <li>Every &lt;section&gt; tag is a slide</li>
-      <li>Forward (➡️ and ⬇️), Backward (⬅️ and ⬆️) </li>
-      <li>Auto-scaling and centering</li>
-      <li>Syntax highlighting</li>
-      <li>Progress indicator</li>
-    </ul>
-    <p>
-      Download <a href="https://simpre.vercel.app/simpre.zip" target="_blank">simpre.zip</a>
+    <h1>Welcome to SimPre<br /><small>The <u>Sim</u>plest <u>Pre</u>sentation HTML Framework</small></h1>
+  </section>
+
+  <section>
+    <p class="w500 with-avatar">
+      <img src="https://krasimirtsonev.com/site/assets/pics/avatar300x300.jpg" /> I've always wanted a minimalistic presentation framework that formats my slides correctly. SimPre scales and positions my content, using all the available space. In addition, it comes with a syntax highlighter and progress indicator.<br /><br /><small>Move on and see how to use it. →</small>
     </p>
   </section>
+
   <section>
-    <p class="w500">The main reason for creating this tiny Framework is <strong>the lack of slide auto screen fit</strong>. I want to dump my content and somehow stop worrying about formatting. This is what SimPre does for me. Whether this is text, image, or a code snippet, it automatically scales and positions the slide, so it uses all the available space.</p>
-    <p class="w500"><small>Next: basic usage ➡️</small></p>
+    <h2>It's just a single HTML file</h2>
+    <script src="https://simpre.vercel.app/assets/is.js" data-file="slides/template.html"></script>
   </section>
+
   <section>
-    <h2>Basic usage</h2>
-    <p class="w500">The first step is to download <a href="https://simpre.vercel.app/simpre.zip" target="_blank">simpre.zip</a>. Extract it. All the slides go to <code>index.html</code>.</p>
-    <p class="w500">To create a new slide just add a new &lt;section&gt; tag.</p>
-    <p class="w500">To make a slide with code don't use  &lt;pre&gt; or &lt;code&gt; tags directly. Insert the following:<br /><small><code>&lt;script src="assets/is.js" data-file="slides/example.js">&lt;/script></code></small><br />Where "slides/example.js" is a file that you create.</p>
-    <p class="w500">That's it. Happy presenting!</p>
-    <p class="w500"><small>Next: some demonstration slide ➡️</small></p>
+    <h2>Every &lt;section&gt; tag is a slide</h2>
+    <script src="https://simpre.vercel.app/assets/is.js" data-file="slides/slide.html"></script>
   </section>
+
   <section>
-    <p>This is a code slide</p>
-    <script src="assets/is.js" data-file="slides/example.js"></script>
+    <h2>All the code lives outside the framework</h2>
+    <p>Create a file, add the code inside and<br />load the file via the following &lt;script&gt; tag:</p>
+    <script src="https://simpre.vercel.app/assets/is.js" data-file="slides/slide_code.html"></script>
+    <p><small>Check out the source code of this page as an example.</small></p>
   </section>
+
   <section>
-    <img src="assets/imgs/a.png" />
+    <h2>"Smart" selection mode</h2>
+    <p class="w500">When showing code, I often want to emphasize or hide part of it. To help myself in this direction, I did a little feature that you can turn on and off via the Shift key. Select part of this text and press that button on the keyboard to see how it works.</p>
   </section>
+
   <section>
-    <img src="assets/imgs/b.png" />
+    <p>
+      In case you need the framework offline,<br />download it from here <a href="https://simpre.vercel.app/simpre.zip" target="_blank">simpre.zip</a>.<br /><br />
+      It's also open source here<br /><a href="https://github.com/krasimir/simpre" target="_blank">github.com/krasimir/simpre</a>.
+    </p>
   </section>
-  <section>
-    <p class="w500">Download:<br /><a href="https://simpre.vercel.app/simpre.zip" target="_blank">simpre.zip</a></p>
-    <p class="w500">Documentation:<br /><a href="https://github.com/krasimir/simpre" target="_blank">github.com/krasimir/simpre</a></p>
-  </section>
+  
   <div id="progress"></div>
 </body>
 </html>
