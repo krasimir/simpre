@@ -2,8 +2,8 @@
 
 I've always wanted a minimalistic presentation framework that formats my slides correctly. SimPre scales and positions my content, using all the available space. In addition, it comes with a syntax highlighter and progress indicator.<br /><br /><small>Move on and see how to use it.
 
-* Demo [https://simpre.vercel.app/](https://simpre.vercel.app)
-* Download [https://simpre.vercel.app/simpre.zip](simpre.zip)
+* Demo [simpre.vercel.app](https://simpre.vercel.app)
+* Download [simpre.zip](https://simpre.vercel.app/simpre.zip)
 
 ## Usage
 
@@ -48,7 +48,7 @@ All the code lives outside the framework. Create a file, add the code inside and
 <section>
 ```
 
-There is "smart" selection mode. When showing code, I often want to emphasize or hide part of it. To help myself in this direction, I did a little feature that you can turn on and off via the Shift key. Select part of the text on [this page]([this page](https://simpre.vercel.app)) and press the Shift key to see how it works.
+There is "smart" selection mode. When showing code, I often want to emphasize or hide part of it. To help myself in this direction, I did a little feature that you can turn on and off via the Shift key. Select part of the text on [this page](https://simpre.vercel.app) and press the Shift key to see how it works.
 
 
 
