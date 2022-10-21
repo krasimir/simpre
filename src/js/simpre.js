@@ -6,9 +6,11 @@ const DOWN = ['ArrowDown', 40];
 const LEFT = ['ArrowLeft', 37];
 const RIGHT = ['ArrowRight', 39];
 const BACKSPACE = ['Backspace', 8];
+const PAGE_DOWN = ['PageDown', 34];
+const PAGE_UP = ['PageUp', 33];
 const SHIFT = ['Shift', 16];
-const FORWARD = [].concat(RIGHT, DOWN);
-const BACKWARD = [].concat(LEFT, UP, BACKSPACE);
+const FORWARD = [].concat(RIGHT, DOWN, PAGE_DOWN);
+const BACKWARD = [].concat(LEFT, UP, BACKSPACE, PAGE_UP);
 let SELECTION_TYPE = true;
 
 function init() {
