@@ -1,6 +1,6 @@
 {
   "name": "simpre",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "description": "HTML presentation framework",
   "main": "index.js",
   "scripts": {
@@ -26,7 +26,6 @@
     "chalk": "4.1.2",
     "chokidar": "3.5.2",
     "clean-css": "5.2.2",
-    "uglify-js": "3.15.0",
-    "prismjs": "1.26.0"
+    "uglify-js": "3.15.0"
   }
 }

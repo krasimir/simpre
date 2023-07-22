@@ -1,5 +1,3 @@
-window.Prism = require('prismjs');
-
 const SLIDES_SELECTOR = 'section';
 const UP = ['ArrowUp', 38];
 const DOWN = ['ArrowDown', 40];
@@ -19,18 +17,18 @@ function init() {
   const totalSlides = slides.length;
   let current = -1;
 
-  showSlide(parseInt(window.location.hash.substr(1)) || 0);
+  showSlide(parseInt(window.location.hash.substr(1)) || 0, 'up');
   setSelectionType();
 
   document.querySelector('body').addEventListener('keyup', (e) => {
     const key = e.key || e.keyCode;
     if (FORWARD.includes(key)) { // ******************* forward
       if (current + 1 < totalSlides) {
-        showSlide(current + 1);
+        showSlide(current + 1, 'up');
       }
     } else if (BACKWARD.includes(key)) { // *********** backward
       if (current - 1 >= 0) {
-        showSlide(current - 1);
+        showSlide(current - 1, 'down');
       }
     }
     if (SHIFT.includes(key)) {
@@ -38,8 +36,13 @@ function init() {
     }
   });
 
-  function showSlide(idx) {
+  function showSlide(idx, direction) {
     if (current >= 0) {
+      if (slides[current].subCodeSections) {
+        if (slides[current].subCodeSections[direction]()) {
+          return;
+        }
+      }
       slides[current].style.visibility = 'hidden';
       slides[current].style.opacity = 0;
     }
