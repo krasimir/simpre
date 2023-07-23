@@ -94,8 +94,21 @@ p code {
   display: none !important;
 }
 .line-highlight {
-  border-top: solid 1px #000;
-  border-bottom: solid 1px #000;
+  border-top: solid 2px #000;
+  border-bottom: solid 2px #000;
+  left: 2em;
+	border-left: solid 6px #000;
+	transform: scaleX(0.91);
+	transform-origin: left;
+  background: none;
+}
+.line-highlight::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: #000;
 }
 .line-highlight[data-start="0"] {
   display: none !important;
