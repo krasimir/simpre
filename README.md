@@ -50,5 +50,17 @@ All the code lives outside the framework. Create a file, add the code inside and
 
 There is "smart" selection mode. When showing code, I often want to emphasize or hide part of it. To help myself in this direction, I did a little feature that you can turn on and off via the Shift key. Select part of the text on [this page](https://simpre.vercel.app) and press the Shift key to see how it works.
 
+If you need to emphasize on a part of the code you can use the `data-sections` attribute on the `<script>` tag. This will create a seprate slide for each of the sections. For example:
+
+```
+<script
+  src="https://simpre.vercel.app/assets/is.js"
+  data-file="slides/template.html"
+  data-sections="2-8,10">
+</script>
+```
+
+This will highlight the code between line 2 and 8 including. After that the code at line 10.
+
 
 
