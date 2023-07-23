@@ -52,7 +52,7 @@ There is "smart" selection mode. When showing code, I often want to emphasize or
 
 If you need to emphasize on a part of the code you can use the `data-sections` attribute on the `<script>` tag. This will create a seprate slide for each of the sections. For example:
 
-```
+```html
 <script
   src="https://simpre.vercel.app/assets/is.js"
   data-file="slides/template.html"
