@@ -17,25 +17,36 @@ function init() {
   const totalSlides = slides.length;
   let current = -1;
 
-  showSlide(parseInt(window.location.hash.substr(1)) || 0, 'up');
+  checkForCustomLogic(parseInt(window.location.hash.substr(1)) || 0, 'up');
   setSelectionType();
 
   document.querySelector('body').addEventListener('keyup', (e) => {
     const key = e.key || e.keyCode;
     if (FORWARD.includes(key)) { // ******************* forward
       if (current + 1 < totalSlides) {
-        showSlide(current + 1, 'up');
+        checkForCustomLogic(current + 1, 'up');
       }
     } else if (BACKWARD.includes(key)) { // *********** backward
       if (current - 1 >= 0) {
-        showSlide(current - 1, 'down');
+        checkForCustomLogic(current - 1, 'down');
       }
     }
     if (SHIFT.includes(key)) {
       setSelectionType();
     }
   });
-
+  function checkForCustomLogic(idx, direction) {
+    if (slides[current] && slides[current].dataset && slides[current].dataset.func) {
+      const func = window[slides[current].dataset.func];
+      if (func) {
+        func(() => showSlide(idx, direction), direction);
+        return;
+      } else {
+        console.error(`Function ${slides[current].dataset.func} is not defined`);
+      }
+    }
+    showSlide(idx, direction);
+  }
   function showSlide(idx, direction) {
     if (current >= 0) {
       if (slides[current].subCodeSections) {

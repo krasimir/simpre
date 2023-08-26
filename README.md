@@ -62,5 +62,18 @@ If you need to emphasize on a part of the code you can use the `data-sections` a
 
 This will highlight the code between line 2 and 8 including. After that the code at line 10.
 
+In some cases you may need to implement a custom logic for your slide. If that's the case use the following data attribute attached to your `<section>` tag:
+
+```html
+<script>
+  window.myCustomLogic = function (done, direction) {
+    console.log(direction); // up or down
+    done(); // this will call the next slide
+  }
+</script>
+<section data-func="myCustomLogic">...</section>
+```
+
+The `myCustomLogic` function will be fired when you try to go away from the slide. It will be called again and again until you execute the passed `done` callback.
 
 
