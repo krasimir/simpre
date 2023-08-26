@@ -1,7 +1,10 @@
 <script>
-  window.myCustomLogic = function (done, direction) {
+  window.onChangeCustomLogic = function (done, direction) {
     console.log(direction); // up or down
     done(); // this will call the next slide
   }
+  window.onEnterCustomLogic = function () {
+    // ...
+  }
 </script>
-<section data-func="myCustomLogic">...</section>
+<section data-onChange="onChangeCustomLogic" data-onEnter="onEnterCustomLogic">...</section>

@@ -36,13 +36,21 @@ function init() {
     }
   });
   function checkForCustomLogic(idx, direction) {
-    if (slides[current] && slides[current].dataset && slides[current].dataset.func) {
-      const func = window[slides[current].dataset.func];
-      if (func) {
-        func(() => showSlide(idx, direction), direction);
+    if (slides[current] && slides[current].dataset && slides[current].dataset.onchange) {
+      const onchange = window[slides[current].dataset.onchange];
+      if (onchange) {
+        onchange(() => showSlide(idx, direction), direction);
         return;
       } else {
-        console.error(`Function ${slides[current].dataset.func} is not defined`);
+        console.error(`Function ${slides[current].dataset.onchange} is not defined`);
+      }
+    } else if (slides[idx] && slides[idx].dataset && slides[idx].dataset.onenter) {
+      const onenter = window[slides[idx].dataset.onenter];
+      if (onenter) {
+        onenter(() => showSlide(idx, direction), slides[idx]);
+        return;
+      } else {
+        console.error(`Function ${slides[idx].dataset.onenter} is not defined`);
       }
     }
     showSlide(idx, direction);

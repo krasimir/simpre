@@ -21,7 +21,12 @@
     }
   </style>
   <script>
-    function customLogic(done, direction) {
+    function onChangeCustomLogic(done, direction) {
+      console.log('change', direction);
+      done();
+    }
+    function onEnterCustomLogic(done, sectionElement) {
+      console.log('enter', sectionElement);
       done();
     }
   </script>
@@ -48,7 +53,7 @@
     <script src="assets/is.js" data-file="slides/slide.html"></script>
   </section>
 
-  <section data-func="customLogic">
+  <section data-onChange="onChangeCustomLogic" data-onEnter="onEnterCustomLogic">
     <h2>You may have a custom slide logic</h2>
     <p>Just add "data-func" attribute to your &lt;section> tag.<br />This needs to be a globally defined function.</p>
     <script src="assets/is.js" data-file="slides/custom.html"></script>
