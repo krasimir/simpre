@@ -66,15 +66,16 @@ In some cases you may need to implement a custom logic for your slide. If that's
 
 ```html
 <script>
-  window.onChangeCustomLogic = function (done, direction) {
-    console.log(direction); // up or down
-    done(); // this will call the next slide
+  window.onEnter = async function (element) {
+    // ... do some potential async logic
   }
-  window.onEnterCustomLogic = function () {
-    // ...
+  window.onChange = async function (element, direction) {
+    // Return "true" if you want to move forward
+    // with the slide change.
+    return true;
   }
 </script>
-<section data-onChange="onChangeCustomLogic" data-onEnter="onEnterCustomLogic">...</section>
+<section data-onenter="onEnter" data-onchange="onChange"></section>
 ```
 
 The `onChangeCustomLogic` function will be fired when you try to go away from the slide. It will be called again and again until you execute the passed `done` callback. The `onEnterCustomLogic` is called when you enter the slide.

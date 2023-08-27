@@ -1,10 +1,11 @@
 <script>
-  window.onChangeCustomLogic = function (done, direction) {
-    console.log(direction); // up or down
-    done(); // this will call the next slide
+  window.onEnter = async function (element) {
+    // ... do some potential async logic
   }
-  window.onEnterCustomLogic = function () {
-    // ...
+  window.onChange = async function (element, direction) {
+    // Return "true" if you want to move forward
+    // with the slide change.
+    return true;
   }
 </script>
-<section data-onChange="onChangeCustomLogic" data-onEnter="onEnterCustomLogic">...</section>
+<section data-onenter="onEnter" data-onchange="onChange"></section>

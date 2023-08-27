@@ -21,13 +21,33 @@
     }
   </style>
   <script>
-    function onChangeCustomLogic(done, direction) {
-      console.log('change', direction);
-      done();
+    let counter = 0;
+    async function onEnter1(element) {
+      console.log('onEnter1');
+      document.querySelectorAll('#custom1 span').forEach((el) => {
+        el.style.fontWeight = 'bold';
+      });
     }
-    function onEnterCustomLogic(done, sectionElement) {
-      console.log('enter', sectionElement);
-      done();
+    async function onChange1(element, direction) {
+      console.log('onChange1', direction);
+      return true;
+    }
+    async function onEnter2(element) {
+      console.log('onEnter2');
+      document.querySelector('#custom2').innerHTML = `You've changed the slide ${counter} times`;
+    }
+    async function onChange2(element, direction) {
+      console.log('onChange2', direction);
+      if (direction === 'up' && counter < 3) {
+        counter++;
+        document.querySelector('#custom2').innerHTML = `You've changed the slide ${counter} times`;
+        return false;
+      } else if (direction === 'down' && counter > 0) {
+        counter--;
+        document.querySelector('#custom2').innerHTML = `You've changed the slide ${counter} times`;
+        return false;
+      }
+      return true;
     }
   </script>
 </head>
@@ -53,10 +73,15 @@
     <script src="assets/is.js" data-file="slides/slide.html"></script>
   </section>
 
-  <section data-onChange="onChangeCustomLogic" data-onEnter="onEnterCustomLogic">
+  <section data-onenter="onEnter1" data-onchange="onChange1">
     <h2>You may have a custom slide logic</h2>
-    <p>Just add "data-func" attribute to your &lt;section> tag.<br />This needs to be a globally defined function.</p>
+    <p id="custom1">Just add <span>"data-onchange"</span> or <span>"data-onenter"</span> attribute to your &lt;section> tag.<br />Those need to be a globally defined function.</p>
     <script src="assets/is.js" data-file="slides/custom.html"></script>
+  </section>
+
+  <section data-onenter="onEnter2" data-onchange="onChange2">
+    <h2>Another one with custom logic</h2>
+    <p id="custom2"></p>
   </section>
 
   <section>

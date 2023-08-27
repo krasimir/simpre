@@ -16,58 +16,68 @@ function init() {
   const slides = document.querySelectorAll(SLIDES_SELECTOR);
   const totalSlides = slides.length;
   let current = -1;
+  let initialSlide = parseInt(window.location.hash.substr(1)) || 0;
 
-  checkForCustomLogic(parseInt(window.location.hash.substr(1)) || 0, 'up');
+  showSlide(initialSlide, 'up');
   setSelectionType();
 
   document.querySelector('body').addEventListener('keyup', (e) => {
     const key = e.key || e.keyCode;
     if (FORWARD.includes(key)) { // ******************* forward
       if (current + 1 < totalSlides) {
-        checkForCustomLogic(current + 1, 'up');
+        showSlide(current + 1, 'up');
       }
     } else if (BACKWARD.includes(key)) { // *********** backward
       if (current - 1 >= 0) {
-        checkForCustomLogic(current - 1, 'down');
+        showSlide(current - 1, 'down');
       }
     }
     if (SHIFT.includes(key)) {
       setSelectionType();
     }
   });
-  function checkForCustomLogic(idx, direction) {
-    if (slides[current] && slides[current].dataset && slides[current].dataset.onchange) {
+  function checkForOnChange(sectionEl, direction) {
+    if (sectionEl && sectionEl.dataset && sectionEl.dataset.onchange) {
       const onchange = window[slides[current].dataset.onchange];
       if (onchange) {
-        onchange(() => showSlide(idx, direction), direction);
-        return;
+        return onchange(sectionEl, direction);
       } else {
-        console.error(`Function ${slides[current].dataset.onchange} is not defined`);
-      }
-    } else if (slides[idx] && slides[idx].dataset && slides[idx].dataset.onenter) {
-      const onenter = window[slides[idx].dataset.onenter];
-      if (onenter) {
-        onenter(() => showSlide(idx, direction), slides[idx]);
-        return;
-      } else {
-        console.error(`Function ${slides[idx].dataset.onenter} is not defined`);
+        console.error(`Function ${sectionEl.dataset.onchange} is not defined`);
       }
     }
-    showSlide(idx, direction);
+    return true;
   }
-  function showSlide(idx, direction) {
+  async function checkForOnEnter(sectionEl) {
+    if (sectionEl.dataset && sectionEl.dataset.onenter) {
+      const onenter = window[sectionEl.dataset.onenter];
+      if (onenter) {
+        await onenter(sectionEl);
+        return;
+      } else {
+        console.error(`Function ${sectionEl.dataset.onenter} is not defined`);
+      }
+    }
+  }
+  async function showSlide(newIdx, direction) {
     if (current >= 0) {
+      // Marking code snippet lines
       if (slides[current].subCodeSections) {
         if (slides[current].subCodeSections[direction]()) {
           return;
         }
       }
+      // Checking for onchange
+      if (!(await checkForOnChange(slides[current], direction))) {
+        return;
+      }
       slides[current].style.visibility = 'hidden';
       slides[current].style.opacity = 0;
     }
-    current = idx;
+    current = newIdx;
     slides[current].style.visibility = 'visible';
     slides[current].style.opacity = 1;
+    // Checking for onenter
+    await checkForOnEnter(slides[current]);
     const postSlide = () => {
       updateProgress();
       setTimeout(() => {
