@@ -7,7 +7,8 @@
     const node = document.createElement('pre');
     if (sections) {
       node.setAttribute('data-line', '0');
-      const subSections = ['0'].concat(sections.split(','));
+      const showFirstSelection = !!sections.match(/^!/);
+      const subSections = ['0'].concat(sections.replace(/^!/, '').split(','));
       const sectionNode = findSectionTag(currentNode);
       if (sectionNode) {
         const SubSectionsAPI = {
@@ -39,6 +40,11 @@
           }
         };
         sectionNode.subCodeSections = SubSectionsAPI;
+        if (showFirstSelection) {
+          setTimeout(() => {
+            SubSectionsAPI.up();
+          }, 200);
+        }
       }
     }
     if (err) {

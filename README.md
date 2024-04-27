@@ -60,7 +60,7 @@ If you need to emphasize on a part of the code you can use the `data-sections` a
 </script>
 ```
 
-This will highlight the code between line 2 and 8 including. After that the code at line 10.
+This will highlight the code between line 2 and 8 including. After that the code at line 10. You can also set a value of `!2-8,10` (notice the `!` in the beginning). This will trigger the first highlighting automatically.
 
 In some cases you may need to implement a custom logic for your slide. If that's the case use the following data attributes attached to your `<section>` tag:
 
