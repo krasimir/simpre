@@ -131,20 +131,9 @@ window.fit = function fit(node) {
     // setting the position
     const wAfterScale = node.getBoundingClientRect().width;
     const hAfterScale = node.getBoundingClientRect().height;
-    let top = false;
-    let left = false;
-    if (wAfterScale < vw - 10) {
-      top = 0;
-      left = (vw - wAfterScale) / 2;
-    }
-    if (hAfterScale < vh - 10) {
-      top = (vh - hAfterScale) / 2;
-    }
-    if (top !== false || left !== false) {
-      node.style.position = 'absolute';
-      node.style.top = top + 'px';
-      node.style.left = left + 'px';
-    }
+    node.style.position = 'absolute';
+    node.style.top = Math.max(0, (vh - hAfterScale) / 2) + 'px';
+    node.style.left = Math.max(0, (vw - wAfterScale) / 2) + 'px';
     node.scaled = true;
   }
   resize();
