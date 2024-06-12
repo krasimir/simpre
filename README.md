@@ -17,8 +17,10 @@ It's just a single HTML file:
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SimPre - The Simplest Presentation HTML Framework</title>
+  <link rel="stylesheet" href="https://simpre.vercel.app/assets/prism.css" />
   <link rel="stylesheet" href="https://simpre.vercel.app/assets/styles.css" />
   <script src="https://simpre.vercel.app/assets/simpre.js"></script>
+  <script src="https://simpre.vercel.app/assets/prism.js"></script>
 </head>
 <body>
   <section>
