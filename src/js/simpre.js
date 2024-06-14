@@ -102,8 +102,10 @@ function init() {
     progressNode.style.width = percents + '%';
   }
   function setSelectionType() {
-    document.querySelector('body')
-    .setAttribute('class', SELECTION_TYPE ? 'selection-type-1' : 'selection-type-2');
+    const body = document.querySelector('body');
+    body.classList.remove('selection-type-1');
+    body.classList.remove('selection-type-2');
+    body.classList.add(SELECTION_TYPE ? 'selection-type-1' : 'selection-type-2');
     SELECTION_TYPE = !SELECTION_TYPE;
   }
 }
