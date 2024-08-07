@@ -82,4 +82,5 @@ In some cases you may need to implement a custom logic for your slide. If that's
 
 The `onChangeCustomLogic` function will be fired when you try to go away from the slide. It will be called again and again until you execute the passed `done` callback. The `onEnterCustomLogic` is called when you enter the slide.
 
+You can also use `Simpre.nextSlide()` and `Simplre.previousSlide()` global functions to control the slides.
 

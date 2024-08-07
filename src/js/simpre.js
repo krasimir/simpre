@@ -11,6 +11,8 @@ const FORWARD = [].concat(RIGHT, DOWN, PAGE_DOWN);
 const BACKWARD = [].concat(LEFT, UP, BACKSPACE, PAGE_UP);
 let SELECTION_TYPE = true;
 
+const Simpre = window.Simpre = {};
+
 function init() {
   const progressNode = document.querySelector('#progress');
   const slides = document.querySelectorAll(SLIDES_SELECTOR);
@@ -24,18 +26,24 @@ function init() {
   document.querySelector('body').addEventListener('keyup', (e) => {
     const key = e.key || e.keyCode;
     if (FORWARD.includes(key)) { // ******************* forward
-      if (current + 1 < totalSlides) {
-        showSlide(current + 1, 'up');
-      }
+      nextSlide();
     } else if (BACKWARD.includes(key)) { // *********** backward
-      if (current - 1 >= 0) {
-        showSlide(current - 1, 'down');
-      }
+      previousSlide();
     }
     if (SHIFT.includes(key)) {
       setSelectionType();
     }
   });
+  function nextSlide() {
+    if (current + 1 < totalSlides) {
+      showSlide(current + 1, 'up');
+    }
+  }
+  function previousSlide() {
+    if (current - 1 >= 0) {
+      showSlide(current - 1, 'down');
+    }
+  }
   function checkForOnChange(sectionEl, direction) {
     if (sectionEl && sectionEl.dataset && sectionEl.dataset.onchange) {
       const onchange = window[slides[current].dataset.onchange];
@@ -108,6 +116,8 @@ function init() {
     body.classList.add(SELECTION_TYPE ? 'selection-type-1' : 'selection-type-2');
     SELECTION_TYPE = !SELECTION_TYPE;
   }
+  Simpre.nextSlide = nextSlide;
+  Simpre.previousSlide = previousSlide;
 }
 
 window.fit = function fit(node) {
