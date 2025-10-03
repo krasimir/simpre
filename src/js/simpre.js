@@ -83,7 +83,6 @@ function init() {
     }
     current = newIdx;
     slides[current].style.visibility = 'visible';
-    slides[current].style.opacity = 1;
     // Checking for onenter
     await checkForOnEnter(slides[current]);
     const postSlide = () => {
@@ -91,6 +90,9 @@ function init() {
       setTimeout(() => {
         fit(slides[current]);
         location.href = "#"+ current;
+        setTimeout(() => {
+          slides[current].style.opacity = 1;
+        }, 1);
       }, 1);
     }
     // Checking for a code snippet. If we have one we are waiting,
