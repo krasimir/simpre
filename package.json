@@ -4,7 +4,8 @@
   "description": "HTML presentation framework",
   "main": "index.js",
   "scripts": {
-    "dev": "node ./lib/dev.js"
+    "dev": "node ./lib/dev.js",
+    "build": "node ./lib/build.js"
   },
   "repository": {
     "type": "git",
