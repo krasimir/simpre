@@ -82,5 +82,11 @@ In some cases you may need to implement a custom logic for your slide. If that's
 
 The `onChangeCustomLogic` function will be fired when you try to go away from the slide. It will be called again and again until you execute the passed `done` callback. The `onEnterCustomLogic` is called when you enter the slide.
 
-You can also use `Simpre.nextSlide()` and `Simplre.previousSlide()` global functions to control the slides.
+You can also use `Simpre.nextSlide()` and `Simpre.previousSlide()` global functions to control the slides.
+
+## Navigation
+
+On a keyboard use the arrow keys, `Page Up` / `Page Down`, or `Backspace` to go forward and backward.
+
+On a touch device (like a mobile phone) double-tap the right half of the screen to go to the next slide, or double-tap the left half to go back. A single tap does nothing, so an accidental touch won't skip a slide.
 

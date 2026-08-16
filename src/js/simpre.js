@@ -10,6 +10,7 @@ const SHIFT = ['Shift', 16];
 const FORWARD = [].concat(RIGHT, DOWN, PAGE_DOWN);
 const BACKWARD = [].concat(LEFT, UP, BACKSPACE, PAGE_UP);
 let SELECTION_TYPE = true;
+const DOUBLE_TAP_DELAY = 300; // ms between taps to count as a double-tap
 
 const Simpre = window.Simpre = {};
 
@@ -34,6 +35,29 @@ function init() {
       setSelectionType();
     }
   });
+
+  // Double-tap left/right half of the screen to navigate on touch devices,
+  // avoiding accidental single-tap navigation.
+  let lastTap = { time: 0, side: null };
+  document.querySelector('body').addEventListener('touchend', (e) => {
+    if (e.changedTouches.length !== 1) {
+      return;
+    }
+    const touch = e.changedTouches[0];
+    const side = touch.clientX < window.innerWidth / 2 ? 'left' : 'right';
+    const now = Date.now();
+    if (lastTap.side === side && now - lastTap.time < DOUBLE_TAP_DELAY) {
+      lastTap = { time: 0, side: null };
+      if (side === 'right') {
+        nextSlide();
+      } else {
+        previousSlide();
+      }
+    } else {
+      lastTap = { time: now, side };
+    }
+  });
+
   function nextSlide() {
     if (current + 1 < totalSlides) {
       showSlide(current + 1, 'up');
